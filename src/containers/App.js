@@ -1,13 +1,8 @@
 // Used npm react-redux package to notify react it will be working together with redux
-
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import CardList from '../components/CardList'
-import SearchBox from '../components/searchbox'
-import Scroll from '../components/scroll'
-import ErrorBoundary from '../components/errorBoundary'
-import Header from '../components/header'
 import { setSearchField, requestRobots } from '../action'
+import MainPage from '../components/MainPage'
 
 const mapStateToProps = (state) => {
   return {
@@ -27,30 +22,8 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 class App extends Component {
-  componentDidMount () {
-    this.props.onRequestRobots()
-  }
-
   render () {
-    const { searchField, onSearchChange, robots, isPending } = this.props
-    
-    const filteredRobos = robots.filter(robot => {
-      return robot.name.toLowerCase().includes(searchField.toLowerCase())
-    })
-
-    return (
-      <div className='tc'>
-        <Header />
-        <SearchBox searchChange={onSearchChange} />
-        <Scroll>
-          { isPending ? <h1>Loading</h1>
-            : <ErrorBoundary>
-              <CardList robots={filteredRobos} />
-            </ErrorBoundary>
-          }
-        </Scroll>
-      </div>
-    )
+    return <MainPage {...this.props} />
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(App)

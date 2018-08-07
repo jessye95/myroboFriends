@@ -12,7 +12,7 @@ import 'tachyons' // this is a css framework
 
 const rootReducers = combineReducers({searchRobots, requestRobots})
 const logger = createLogger()
-const store = createStore(rootReducers, applyMiddleware(thunkMiddleware))
+const store = createStore(rootReducers, applyMiddleware(thunkMiddleware, logger))
 
 ReactDOM.render(
   <Provider store={store}>
