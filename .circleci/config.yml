@@ -1,0 +1,20 @@
+version: 2
+jobs: 
+  bobby: 
+    docker:
+      - image: circleci/node:8.9
+    steps:
+    - checkout
+    - run: echo "npm installing"
+  Sally: 
+    docker:
+      - image: circleci/ruby:2.4.1
+    steps:
+    - checkout
+    - run: echo "Double Hello."
+workflows:
+  version: 2
+  bobby_sally:
+    jobs:
+      - bobby
+      - sally
