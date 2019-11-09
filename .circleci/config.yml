@@ -4,7 +4,7 @@
 #
 version: 2
 jobs:
-  buildA:
+  buildAA:
     docker:
       # specify the version you desire here
       - image: circleci/node:7.10
@@ -68,6 +68,6 @@ jobs:
       - run: yarn test
 workflows:
   version: 2
-  run_buildA_buildB:
-    jobs: -buildA
+  run_buildAA_buildB:
+    jobs: -buildAA
       -buildB
